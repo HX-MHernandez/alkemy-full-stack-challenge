@@ -1,0 +1,34 @@
+{
+  "name": "alkemy-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --detectOpenHandles",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mate444/alkemy-full-stack-challenge.git"
+  },
+  "author": "Mateo Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mate444/alkemy-full-stack-challenge/issues"
+  },
+  "homepage": "https://github.com/Mate444/alkemy-full-stack-challenge#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "pg": "^8.7.3",
+    "sequelize": "^6.21.3",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

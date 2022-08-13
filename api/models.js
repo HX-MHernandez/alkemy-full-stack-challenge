@@ -1,7 +1,11 @@
-// Synchronizes models
+// Synchronizes db with models
 const { sequelize } = require('./db');
 const Activity = require('./activity/Activity.model');
-sequelize.models = { Activity };
+const Category = require('./category/Category.model');
+sequelize.models = {
+  Activity,
+  Category,
+};
 
 module.exports = {
   ...sequelize.models,

@@ -1,5 +1,5 @@
 const app = require('./app');
-const { sequelize } = require('./db');
+const { sequelize } = require('./models');
 require('dotenv').config();
 
 sequelize.sync({ force: false }).then(() => {

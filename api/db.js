@@ -1,5 +1,6 @@
+// Conection to db
 require('dotenv').config();
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
 const {
   DB_USER,
@@ -15,5 +16,6 @@ const sequelize = new Sequelize(`alkemy-challenge`, `${DB_USER}`, `${DB_PASSWORD
 });
 
 module.exports = {
+  ...sequelize.models,
   sequelize,
 };

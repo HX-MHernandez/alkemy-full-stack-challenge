@@ -46,7 +46,15 @@ class CategoryProvider {
       });
       return categories;
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
+    }
+  }
+  async GetCategory(id) {
+    try {
+      const foundCategory = await Category.findByPk(id);
+      return foundCategory;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }

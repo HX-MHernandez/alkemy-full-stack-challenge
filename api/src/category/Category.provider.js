@@ -37,6 +37,18 @@ class CategoryProvider {
       throw new Error(err);
     }
   }
+  async GetCategories(userId) {
+    try {
+      const categories = await Category.findAll({
+        where: {
+          userId,
+        },
+      });
+      return categories;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 
 module.exports = CategoryProvider;

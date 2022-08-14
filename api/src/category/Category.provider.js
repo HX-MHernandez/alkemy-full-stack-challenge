@@ -11,6 +11,19 @@ class CategoryProvider {
       throw new Error(err);
     }
   }
+  async ModifyCategory(attributes) {
+    try {
+      const modifiedCategory = await Category.update(attributes.changes, {
+        where: {
+          userId: attributes.userId,
+          id: attributes.categoryId,
+        },
+      });
+      return modifiedCategory;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = CategoryProvider;

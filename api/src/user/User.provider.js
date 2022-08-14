@@ -10,6 +10,21 @@ class UserProvider {
       throw new Error(err);
     }
   }
+  async ModifyUser(attributes) {
+    try {
+      const userModified = await User.update({
+        username: attributes.username,
+        password: attributes.password,
+      }, {
+        where: {
+          userId: attributes.userId,
+        },
+      });
+      return userModified;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = UserProvider;

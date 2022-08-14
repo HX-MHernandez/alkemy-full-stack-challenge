@@ -25,6 +25,15 @@ class UserProvider {
       throw new Error(err);
     }
   }
+  async GetUser(id) {
+    try {
+      const foundUser = await User.findByPk(id);
+      if (!foundUser) return 'User not found';
+      return foundUser;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = UserProvider;

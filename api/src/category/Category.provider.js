@@ -24,6 +24,19 @@ class CategoryProvider {
       throw new Error(err);
     }
   }
+  async DeleteCategory(id) {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const deletedCategory = await Category.destroy({
+        where: {
+          id,
+        },
+      });
+      return 'Category succesfully deleted';
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 module.exports = CategoryProvider;

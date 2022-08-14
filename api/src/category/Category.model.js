@@ -3,7 +3,7 @@ const { sequelize } = require('../../db');
 
 class Category extends Model {}
 Category.init({
-  categoryId: {
+  id: {
     primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,

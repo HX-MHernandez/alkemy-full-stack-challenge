@@ -3,7 +3,7 @@ const { sequelize } = require('../../db');
 
 class Session extends Model {}
 Session.init({
-  sessionId: {
+  id: {
     primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,

@@ -3,7 +3,7 @@ const { sequelize } = require('../../db');
 
 class Activity extends Model {}
 Activity.init({
-  activityId: {
+  id: {
     primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,

@@ -3,7 +3,7 @@ const { sequelize } = require('../../db');
 
 class User extends Model {}
 User.init({
-  userId: {
+  id: {
     primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,

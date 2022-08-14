@@ -1,5 +1,5 @@
 const { DataTypes, Model } = require('sequelize');
-const { sequelize } = require('../db');
+const { sequelize } = require('../../db');
 
 class Activity extends Model {}
 Activity.init({
@@ -11,8 +11,16 @@ Activity.init({
     allowNull: false,
   },
   type: {
-    type: DataTypes.ENUM('Income', 'Expense'),
+    type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      customValidator: (value) => {
+        const enums = ['Income', 'Expense'];
+        if (!enums.includes(value)) {
+          throw new Error('Enum type is incorrect');
+        }
+      },
+    },
   },
   amount: {
     type: DataTypes.DOUBLE,
@@ -28,6 +36,7 @@ Activity.init({
   timestamps: false,
   sequelize,
   modelName: 'Activity',
+  tableName: 'Activity',
 });
 
 module.exports = Activity;

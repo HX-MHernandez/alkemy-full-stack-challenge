@@ -12,6 +12,8 @@
     },
     "rules": {
         "object-curly-spacing": "off",
-        "max-len": ["error", { "code": 120 }]
+        "max-len": ["error", { "code": 120 }],
+        "new-cap": "off",
+        "require-jsdoc": "off"
     }
 }

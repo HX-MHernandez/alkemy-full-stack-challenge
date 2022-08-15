@@ -1,9 +1,9 @@
 // This file syncs db with models
 const { sequelize } = require('./db');
-const Activity = require('./activity/Activity.model');
-const Category = require('./category/Category.model');
-const User = require('./user/User.model');
-const Session = require('./session/session.model');
+const Activity = require('./src/activity/Activity.model');
+const Category = require('./src/category/Category.model');
+const User = require('./src/user/User.model');
+const Session = require('./src/session/Session.model');
 
 sequelize.models = {
   Activity,
@@ -13,14 +13,24 @@ sequelize.models = {
 };
 
 // Relations
-Activity.belongsTo(Category);
+Activity.belongsTo(Category, {
+  foreignKey: 'categoryId',
+});
 Category.hasMany(Activity);
-Activity.belongsTo(User);
+Activity.belongsTo(User, {
+  foreignKey: 'userId',
+});
 User.hasMany(Activity);
-Category.belongsTo(User);
+Category.belongsTo(User, {
+  foreignKey: 'userId',
+});
 User.hasMany(Category);
-User.belongsTo(Session);
-Session.hasMany(User);
+User.belongsTo(Session, {
+  foreignKey: 'sessionId',
+});
+Session.belongsTo(User, {
+  foreignKey: 'userId',
+});
 
 module.exports = {
   ...sequelize.models,

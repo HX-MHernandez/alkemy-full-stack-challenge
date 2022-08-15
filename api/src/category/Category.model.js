@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize');
-const { sequelize } = require('../db');
+const { sequelize } = require('../../db');
 
 class Category extends Model {}
 Category.init({
-  categoryId: {
+  id: {
     primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -15,13 +15,22 @@ Category.init({
     allowNull: false,
   },
   type: {
-    type: DataTypes.ENUM('Income', 'Expense'),
+    type: DataTypes.STRING,
     allowNull: false,
+    validate: {
+      customValidator: (value) => {
+        const enums = ['Income', 'Expense'];
+        if (!enums.includes(value)) {
+          throw new Error('Enum type is incorrect');
+        }
+      },
+    },
   },
 }, {
   timestamps: false,
   sequelize,
   modelName: 'Category',
+  tableName: 'Category',
 });
 
 module.exports = Category;

@@ -1,4 +1,4 @@
-const { Activity, Category, User, Session } = require('../../models');
+const { Activity, Category } = require('../../models');
 
 class ActivityProvider {
   constructor() {}
@@ -54,6 +54,19 @@ class ActivityProvider {
         include: [{ model: Category }],
       });
       return activities;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+  async DeleteActivity(id) {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const deletedActivity = await Activity.destroy({
+        where: {
+          id,
+        },
+      });
+      return 'Activity succesfully deleted';
     } catch (err) {
       throw new Error(err);
     }

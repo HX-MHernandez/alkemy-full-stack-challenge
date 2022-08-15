@@ -12,6 +12,20 @@ class ActivityProvider {
       throw new Error(err);
     }
   }
+  async ModifyActivity(attributes) {
+    try {
+      const modifiedActivity = await Activity.findByPk(attributes.activity.id);
+      await modifiedActivity.update(attributes.activity, {
+        where: {
+          id: attributes.activity.id,
+        },
+      });
+      if (attributes.categoryId) await modifiedActivity.setCategory(attributes.categoryId);
+      return modifiedActivity;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 };
 
 module.exports = ActivityProvider;

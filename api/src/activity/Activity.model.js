@@ -32,6 +32,11 @@ Activity.init({
   description: {
     type: DataTypes.STRING(140),
   },
+  date: {
+    type: DataTypes.DATE,
+    defaultValue: new Date().toISOString(),
+    allowNull: false,
+  },
 }, {
   timestamps: false,
   sequelize,

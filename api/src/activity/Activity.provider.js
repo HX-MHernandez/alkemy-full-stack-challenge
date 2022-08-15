@@ -26,6 +26,38 @@ class ActivityProvider {
       throw new Error(err);
     }
   }
+  async GetActivity(id) {
+    try {
+      const foundCategory = await Activity.findByPk(id, {
+        include: [{ model: Category }],
+      });
+      return foundCategory;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+  async GetActivities(options) {
+    try {
+      if (!options.categoryId) {
+        const activities = await Activity.findAll({
+          where: {
+            userId: options.userId,
+          },
+          include: [{ model: Category }],
+        });
+        return activities;
+      }
+      const activities = await Activity.findAll({
+        where: {
+          categoryId: options.categoryId,
+        },
+        include: [{ model: Category }],
+      });
+      return activities;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 };
 
 module.exports = ActivityProvider;

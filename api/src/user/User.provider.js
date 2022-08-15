@@ -36,4 +36,4 @@ class UserProvider {
   }
 }
 
-module.exports = UserProvider;
+module.exports = new UserProvider();

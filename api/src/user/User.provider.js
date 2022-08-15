@@ -28,8 +28,21 @@ class UserProvider {
   async GetUser(id) {
     try {
       const foundUser = await User.findByPk(id);
-      if (!foundUser) return 'User not found';
+      if (foundUser.length < 1) return 'User not found';
       return foundUser;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+  async CheckUser(email) {
+    try {
+      const foundUser = await User.findAll({
+        where: {
+          email,
+        },
+      });
+      if (foundUser.length < 1) return 'User not found';
+      return foundUser[0];
     } catch (err) {
       throw new Error(err);
     }

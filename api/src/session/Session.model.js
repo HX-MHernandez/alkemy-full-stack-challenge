@@ -1,9 +1,9 @@
 const { DataTypes, Model } = require('sequelize');
-const { sequelize } = require('../db');
+const { sequelize } = require('../../db');
 
 class Session extends Model {}
 Session.init({
-  sessionId: {
+  id: {
     primaryKey: true,
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -14,6 +14,7 @@ Session.init({
   timestamps: false,
   sequelize,
   modelName: 'Session',
+  tableName: 'Session',
 });
 
 module.exports = Session;
